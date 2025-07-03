@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
 
+import AboutMe from "./Components/AboutMe/AboutMe";
+import ProjectComponent from "./Components/Projects/ProjectComponent";
+import TopNav from "./Components/SideNav/Sidebar";
 function App() {
+  const [showText, setShowText] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TopNav />
+      <div className="AppAboutContainer">
+        <div className="AboutCardContainer">
+          <AboutMe />
+        </div>
+        <div className="DetailContainer">
+          <ProjectComponent />
+        </div>
+      </div>
     </div>
   );
 }
-
 export default App;
