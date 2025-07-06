@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import "./Details.css";
-import kavya from "../../assets/KavEdited.jpeg";
+import kavya from "../../assets/KavEdited.webp";
 
 const educationList = [
   {

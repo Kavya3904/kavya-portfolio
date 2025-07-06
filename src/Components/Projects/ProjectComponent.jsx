@@ -1,32 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ProjectComponent.css";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
+
+// Lazy import components only when in view
 import AboutMeDetails from "../Details/AboutMeDetails";
 import Projects from "../Details/Projects";
 import Skills from "../Details/Skills";
 import Whoiam from "../Details/Whoiam";
+
 export default function ProjectComponent() {
   const boxVariant = {
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
-    hidden: { opacity: 0, scale: 0.7, transition: { duration: 0.2 } }, 
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.4, ease: "easeOut" },
+    },
+    hidden: {
+      opacity: 0,
+      scale: 0.95,
+      transition: { duration: 0.2, ease: "easeIn" },
+    },
   };
 
-  const Box = ({ num }) => {
-    const control = useAnimation();
-    const [ref, inView] = useInView({
-      threshold: 0, 
-    });
+  const Box = ({ component }) => {
+    const controls = useAnimation();
+    const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: true });
 
     useEffect(() => {
       if (inView) {
-        console.log("Box is in view", inView);
-        control.start("visible");
-      } else {
-        control.start("hidden");
+        controls.start("visible");
       }
-    }, [control, inView]);
+    }, [controls, inView]);
 
     return (
       <motion.div
@@ -34,25 +39,27 @@ export default function ProjectComponent() {
         ref={ref}
         variants={boxVariant}
         initial="hidden"
-        animate={control}
+        animate={controls}
+        style={{ minHeight: "300px" }} // ✅ Avoid CLS by setting min-height
       >
-        <div>{num} </div>
+        {component}
       </motion.div>
     );
   };
+
   return (
     <div className="ProjectMainDiv">
       <div id="about">
-        <Box num={<AboutMeDetails />} />
+        <Box component={<AboutMeDetails />} />
       </div>
       <div id="projects">
-        <Box num={<Projects />} />
+        <Box component={<Projects />} />
       </div>
       <div id="skills">
-        <Box num={<Skills />} />
+        <Box component={<Skills />} />
       </div>
-      <div id="Who I Am">
-        <Box num={<Whoiam />} />
+      <div id="whoiam">
+        <Box component={<Whoiam />} />
       </div>
     </div>
   );

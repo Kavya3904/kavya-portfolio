@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense, memo } from "react";
 import { motion } from "framer-motion";
-import myImage from "../../assets/My-image.jpg";
+
+import myImage from "../../assets/My-image.webp";
 
 import {
   ImageContainer,
@@ -11,22 +12,29 @@ import {
   AboutMeplace,
   AboutMebutton,
 } from "./AboutMe.styled.jsx";
+const ContactModal = lazy(() => import("./ContactModal.jsx"));
 
-import ContactModal from "./ContactModal.jsx";
-
-export default function AboutMe() {
+function AboutMe() {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: -50 }}
+      layout
+      initial={{ opacity: 0, y: -30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "linear" }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
       style={{ borderRadius: "10px", width: "fit-content" }}
     >
       <AboutMeContainer>
         <ImageContainer>
-          <img src={myImage} alt="Profile" loading="lazy" />
+          <img
+            src={myImage}
+            alt="Profile"
+            loading="lazy"
+            width="300"
+            height="300"
+            style={{ objectFit: "cover", borderRadius: "10px" }}
+          />
         </ImageContainer>
 
         <SummaryContainer>
@@ -43,11 +51,19 @@ export default function AboutMe() {
           </AboutMebutton>
         </motion.div>
 
-        <ContactModal
-          isOpen={modalOpen}
-          onClose={() => setModalOpen(false)}
-        />
+        {/* ✅ Lazy loaded modal */}
+        <Suspense fallback={null}>
+          {modalOpen && (
+            <ContactModal
+              isOpen={modalOpen}
+              onClose={() => setModalOpen(false)}
+            />
+          )}
+        </Suspense>
       </AboutMeContainer>
     </motion.div>
   );
 }
+
+// ✅ Prevent unnecessary re-renders
+export default memo(AboutMe);

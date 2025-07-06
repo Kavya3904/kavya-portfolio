@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import "./Details.css";
 import { motion, AnimatePresence } from "framer-motion";
-import ford from "../../assets/ford-accountmanager.png";
-import wedding from "../../assets/weddding.png";
-import movies from "../../assets/movies-about.jpg";
-import lincoln from "../../assets/lincoln-accountmanager.png";
-import food from "../../assets/food-recepie.png";
+
+// ✅ WebP images – smaller, modern
+import ford from "../../assets/ford-accountmanager.webp";
+import wedding from "../../assets/weddding.webp";
+import movies from "../../assets/movies-about.webp";
+import lincoln from "../../assets/lincoln-accountmanager.webp";
+import food from "../../assets/food-recepie.webp";
 
 const projectData = [
   {
@@ -47,7 +49,7 @@ const projectData = [
 
 const itemsPerPage = 4;
 
-export default function Projects() {
+function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [page, setPage] = useState(0);
 
@@ -78,10 +80,10 @@ export default function Projects() {
             <motion.div
               key={page}
               className="flex-container"
-              initial={{ x: 300, opacity: 0 }}
+              initial={{ x: 200, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -300, opacity: 0 }}
-              transition={{ duration: 0.4 }}
+              exit={{ x: -200, opacity: 0 }}
+              transition={{ duration: 0.3 }}
             >
               {paginatedData.map((item, index) => (
                 <motion.div
@@ -94,8 +96,12 @@ export default function Projects() {
                   <img
                     className="ford"
                     src={item.image}
-                    alt={`project-${index}`}
+                    alt={item.title}
                     loading="lazy"
+                    width="300"
+                    height="180"
+                    fetchpriority={index === 0 ? "high" : "auto"}
+                    style={{ objectFit: "cover", borderRadius: "10px" }}
                   />
                   <div className="content-div">Show more...</div>
                 </motion.div>
@@ -126,7 +132,7 @@ export default function Projects() {
             <motion.div
               className="modal-content"
               exit={{ y: "100vh", opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              transition={{ duration: 0.25 }}
               onClick={(e) => e.stopPropagation()}
             >
               <div className="modal-header">
@@ -149,8 +155,11 @@ export default function Projects() {
 
               <img
                 src={projectData[selectedProject].image}
-                alt="project details"
+                alt={`Preview of ${projectData[selectedProject].title}`}
+                width="600"
+                height="300"
                 loading="lazy"
+                style={{ objectFit: "cover", borderRadius: "10px" }}
               />
 
               <p
@@ -165,3 +174,5 @@ export default function Projects() {
     </div>
   );
 }
+
+export default memo(Projects);
