@@ -12,7 +12,6 @@ export default function Projects() {
 
   const handleClick = (index) => {
     setSelectedProject(index);
-    console.log("Project clicked:", index);
   };
 
   const handleClose = () => {
@@ -53,7 +52,7 @@ export default function Projects() {
       description:
         "Designed and developed a custom wedding invitation website using <b> React.js </b>, showcasing event details, couple info, and celebration highlights. Focused on a clean, responsive layout with a personal touch and deployed the site using Firebase Hosting.",
       image: wedding,
-      link: "https://karthikwedsvyshna.web.app/", 
+      link: "https://karthikwedsvyshna.web.app/",
     },
   ];
 

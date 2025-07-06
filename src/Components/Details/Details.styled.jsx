@@ -1,9 +1,9 @@
-import styled , { keyframes }from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const DetailAboutMeMain = styled.div`
- background: #fff;
+  background: #fff;
   border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 1.5px 4px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18), 0 1.5px 4px rgba(0, 0, 0, 0.08);
   padding: 32px;
   position: relative;
   z-index: 10;
@@ -36,9 +36,8 @@ export const AboutMeExpShort = styled.div`
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
     grid-auto-flow: row;
-   
   }
-  `;
+`;
 
 export const AboutMeItemContainer = styled.div`
   width: 200px;
@@ -56,7 +55,7 @@ export const ExpNumber = styled.div`
   font-weight: 600;
   font-style: normal;
   font-size: 62px;
-  
+
   @media (max-width: 600px) {
     font-size: 46px; /* Adjust font size for smaller screens */
   }
@@ -67,7 +66,7 @@ export const Exptitle = styled.div`
   font-weight: 700;
   font-style: normal;
   font-size: 28px;
-   @media (max-width: 600px) {
+  @media (max-width: 600px) {
     font-size: 24px; /* Adjust font size for smaller screens */
   }
 `;
@@ -97,26 +96,23 @@ export const MyWorkButton = styled.button`
   border: none;
   font-family: "Fira Sans", sans-serif;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
   cursor: pointer;
 `;
 
 export const CompanyDetails = styled.div`
-
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;
 
 export const Intro = styled.div`
-text-align: center;
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-    font-size: 18px;
-    padding-top: 30px;
- 
+  text-align: center;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 18px;
+  padding-top: 30px;
 `;
 
 const scroll = keyframes`
@@ -125,7 +121,6 @@ const scroll = keyframes`
 `;
 
 export const CompanyAboutWrapper = styled.div`
-
   position: relative;
   width: auto;
   overflow: hidden;
@@ -159,7 +154,6 @@ export const FadeLeft = styled.div`
   background: linear-gradient(to right, white, transparent);
   pointer-events: none;
   z-index: 1;
-
 `;
 
 export const FadeRight = styled.div`
@@ -171,7 +165,6 @@ export const FadeRight = styled.div`
   background: linear-gradient(to left, white, transparent);
   pointer-events: none;
   z-index: 1;
-
 `;
 export const CompanyName = styled.div`
   font-family: "Fira Sans", sans-serif;
