@@ -136,7 +136,7 @@ export default function Whoiam() {
           </div>
         </div>
       </div>
-      <div className="social-section">
+      <div className="social-section" id="connect-section">
         <div className="section-title">🔗 Connect with Me</div>
 
         <div className="social-links">

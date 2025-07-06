@@ -18,7 +18,6 @@ import {
   CompanyAboutWrapper,
   CompanyName,
 } from "./Details.styled";
-import { motion } from "framer-motion";
 export default function AboutMeDetails() {
   return (
     <DetailAboutMeMain>
@@ -47,8 +46,36 @@ export default function AboutMeDetails() {
         </AboutMeItemContainer>
       </AboutMeExpShort>
       <ConnectMe>
-        <LetTaklkButton>Let's Talk</LetTaklkButton>
-        <MyWorkButton>My work →</MyWorkButton>
+        <a
+          href="https://github.com/Kavya3904"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: "none" }}
+        >
+          <LetTaklkButton>
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+              alt="GitHub"
+              style={{
+                height: "23px",
+                marginRight: "8px",
+                verticalAlign: "middle",
+                paddingRight: "10px",
+              }}
+            />
+            My Work
+          </LetTaklkButton>
+        </a>
+        <MyWorkButton
+          onClick={() => {
+            const section = document.getElementById("connect-section");
+            if (section) {
+              section.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
+        >
+          Connect with me 😉
+        </MyWorkButton>
       </ConnectMe>
       <CompanyDetails>
         <Intro>Compaines I have worked with</Intro>
