@@ -4,13 +4,23 @@ import emailjs from "emailjs-com";
 import "./ContactModal.css";
 
 export default function ContactModal({ isOpen, onClose }) {
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [formData, setFormData] = useState({
+    userName: "",
+    userEmail: "",
+    message: "",
+  });
   const [status, setStatus] = useState("");
-
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
+
+  const { userName, userEmail, message } = formData;
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -24,31 +34,33 @@ export default function ContactModal({ isOpen, onClose }) {
       message: message,
     };
 
+    const {
+      REACT_APP_EMAILJS_SERVICE_ID,
+      REACT_APP_EMAILJS_TEMPLATE_ID,
+      REACT_APP_EMAILJS_USER_ID,
+    } = process.env;
+
     emailjs
       .send(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID,
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        REACT_APP_EMAILJS_SERVICE_ID,
+        REACT_APP_EMAILJS_TEMPLATE_ID,
         templateParams,
-        process.env.REACT_APP_EMAILJS_USER_ID
+        REACT_APP_EMAILJS_USER_ID
       )
-      .then(
-        () => {
-          setStatus("Thanks for connecting! Your message was sent 🎉");
-          setUserName("");
-          setUserEmail("");
-          setMessage("");
-          setIsSent(true);
+      .then(() => {
+        setStatus("Thanks for connecting! Your message was sent 🎉");
+        setFormData({ userName: "", userEmail: "", message: "" });
+        setIsSent(true);
 
-          setTimeout(() => {
-            setIsSent(false);
-            setStatus("");
-            onClose();
-          }, 2500);
-        },
-        () => {
-          setStatus("Something went wrong 😢");
-        }
-      )
+        setTimeout(() => {
+          setIsSent(false);
+          setStatus("");
+          onClose();
+        }, 2500);
+      })
+      .catch(() => {
+        setStatus("Something went wrong 😢. Please try again.");
+      })
       .finally(() => {
         setIsSending(false);
       });
@@ -56,7 +68,7 @@ export default function ContactModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  const modalContent = (
+  return ReactDOM.createPortal(
     <div className="popup-overlay">
       <div className="popup-box">
         <button className="close-btn" onClick={onClose}>
@@ -66,27 +78,30 @@ export default function ContactModal({ isOpen, onClose }) {
         <form onSubmit={sendEmail}>
           <input
             type="text"
+            name="userName"
             placeholder="Your Name"
             value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            onChange={handleChange}
             required
           />
           <input
             type="email"
+            name="userEmail"
             placeholder="Your Email"
             value={userEmail}
-            onChange={(e) => setUserEmail(e.target.value)}
+            onChange={handleChange}
             required
           />
           <textarea
+            name="message"
             placeholder="Type your message here..."
             value={message}
-            onChange={(e) => setMessage(e.target.value)}
+            onChange={handleChange}
             required
           />
           <button type="submit" disabled={isSending || isSent}>
             {isSending ? (
-              <span className="spinner"></span>
+              <span className="spinner" />
             ) : isSent ? (
               <span className="tick">✔</span>
             ) : (
@@ -96,8 +111,7 @@ export default function ContactModal({ isOpen, onClose }) {
         </form>
         {status && <p className="status">{status}</p>}
       </div>
-    </div>
+    </div>,
+    document.body
   );
-
-  return ReactDOM.createPortal(modalContent, document.body);
 }
