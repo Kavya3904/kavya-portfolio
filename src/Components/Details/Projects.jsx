@@ -3,7 +3,7 @@ import "./Details.css";
 import { motion, AnimatePresence } from "framer-motion";
 import ford from "../../assets/ford-accountmanager.png";
 import wedding from "../../assets/weddding.png";
-import movies from "../../assets/movies-about.png";
+import movies from "../../assets/movies-about.jpg";
 import lincoln from "../../assets/lincoln-accountmanager.png";
 import food from "../../assets/food-recepie.png";
 
