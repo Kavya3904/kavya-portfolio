@@ -78,7 +78,7 @@ export default function AboutMeDetails() {
         </MyWorkButton>
       </ConnectMe>
       <CompanyDetails>
-        <Intro>Compaines I have worked with</Intro>
+        <Intro>Companies I have worked with</Intro>
         <CompanyAboutWrapper>
           <FadeLeft />
           <FadeRight />

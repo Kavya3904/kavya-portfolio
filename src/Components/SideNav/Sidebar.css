@@ -2,12 +2,11 @@
   position: fixed;
   top: 0;
   width: fit-content;
-  
   backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  align-self: center;;
+  align-self: center;
   padding: 10px 20px;
   z-index: 999;
 

@@ -15,7 +15,7 @@ import githubIcon from "../../assets/githubIcon.png";
 import jestIcon from "../../assets/icons8-jest-24.png";
 import jasmineIcon from "../../assets/jasminIcon.png";
 import jiraIcon from "../../assets/jiraIcon.png";
-import playwrightIcon from "../../assets/nodejsIcon.png";
+import playwrightIcon from "../../assets/playwrightIcon.png";
 import sonacubeIcon from "../../assets/sonarcubeIcon.png";
 import splunkIcon from "../../assets/spluckIcon.png";
 import jenkinsIcon from "../../assets/jenkinsIcon.png";

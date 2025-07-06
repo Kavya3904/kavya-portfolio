@@ -4,7 +4,7 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18), 0 1.5px 4px rgba(0, 0, 0, 0.08);
   padding: 32px;
   position: relative;
-  z-index: 10;
+
   transition: box-shadow 0.2s;
   margin-top: 30px;
   text-align: center;
@@ -295,7 +295,7 @@ p::first-letter {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18), 0 1.5px 4px rgba(0, 0, 0, 0.08);
   padding: 32px;
   position: relative;
-  z-index: 10;
+
   transition: box-shadow 0.2s;
   margin-top: 30px;
 }
