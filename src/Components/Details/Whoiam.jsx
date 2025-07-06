@@ -24,6 +24,7 @@ const educationList = [
 export default function Whoiam() {
   return (
     <div className="main-div-whoiam">
+      <div className="whoami">Who Am I</div>
       <div className="whoiam-main-div">
         {/* Heading */}
         <motion.div

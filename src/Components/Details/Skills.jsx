@@ -22,7 +22,7 @@ import jenkinsIcon from "../../assets/jenkinsIcon.png";
 export default function Skills() {
   return (
     <div className="main-div">
-      <div className="skill-heading">Skills / Knowledge</div>
+      <div className="skill-heading-main">Skills / Knowledge</div>
       <div className="skill-main-div">
         <div className="each-skill-div">
           <div className="skill-heading">Frontend Frameworks & Libraries</div>

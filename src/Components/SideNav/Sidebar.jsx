@@ -7,7 +7,7 @@ const navItems = [
   { icon: <FaUserAstronaut  />, label: "About", target: "about" },
   { icon: <FaCode  />, label: "Projects", target: "projects" },
   { icon: <FaTools />, label: "Skills", target: "skills" },
-  { icon: <FaUserPlus  />, label: "Who Am I", target: "Who I Am" }
+  { icon: <FaUserPlus  />, label: "Who Am I", target: "whoiam" }
 ];
 
 export default function TopNav() {

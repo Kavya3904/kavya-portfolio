@@ -15,7 +15,7 @@
   font-weight: 700;
   font-style: normal;
   letter-spacing: 0.1em;
-  font-size: 34px;
+  font-size: 26px;
 }
 
 .flex-container {
@@ -230,18 +230,19 @@ p::first-letter {
   flex-direction: column;
   justify-content: center;
 }
-.skill-heading {
-  font-family: "Fira Sans", sans-serif;
-  margin-top: 0;
-  font-size: 24px;
-  font-weight: 700;
-}
+
 .each-skill-div {
   display: flex;
   flex-direction: column;
   justify-content: start;
   text-align: start;
   padding: 8px;
+}
+.skill-heading-main {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+
+  font-size: 26px;
 }
 .skill-heading {
   font-family: "Fira Sans", sans-serif;
@@ -286,6 +287,9 @@ p::first-letter {
   .skill-heading {
     font-size: 16px;
   }
+  .skill-heading-main {
+    font-size: 26px;
+  }
 }
 
 /* WHO AM I COMPONENT */
@@ -298,6 +302,18 @@ p::first-letter {
 
   transition: box-shadow 0.2s;
   margin-top: 30px;
+}
+.whoami {
+  font-family: "Fira Sans", sans-serif;
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+  color: #222;
+  padding: 0.3rem 0.7rem;
+  border-radius: 12px;
 }
 .whoiam-heading {
   text-align: center;
@@ -312,7 +328,7 @@ p::first-letter {
   font-family: "Fira Sans", sans-serif;
   margin-bottom: 16px;
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 16px;
   font-weight: 800;
   margin-bottom: 2rem;
   line-height: 1.4;
